@@ -44,7 +44,7 @@ const Checkout = () => {
                 paymentDetails={paymentDetails}
                 productDetails={productDetails}
                 tokenList={superTokenList}
-                type="dialog"
+                type="full-screen"
                 walletManager={walletManager}
               >
                 {({ openModal }) => (

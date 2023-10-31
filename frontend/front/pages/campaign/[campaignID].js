@@ -50,6 +50,7 @@ const SpecificCampaign = () => {
         campaignID: campaignID,
         proposalID: parseInt(data.proposalID),
         title: proposalData.title,
+        type: proposalData.type,
         description: proposalData.desc,
         image: proposalData.imageCID,
         video: proposalData.videoCID,
@@ -118,6 +119,9 @@ const SpecificCampaign = () => {
                   <div className="lg:w-4/5 w-full flex flex-col items-center lg:items-start mx-auto lg:mx-6">
                     <p className="text-black text-4xl 4xl:text-7xl text-center">
                       {campaignData.title}
+                    </p>
+                    <p className="text-black text-xl 4xl:text-4xl mt-10 4xl:mt-16 text-justify">
+                      {campaignData.type}
                     </p>
                     <img src={campaignData.image} alt="" className="mt-10" />
                     <video
