@@ -9,6 +9,7 @@ import "./PropFund.sol";
 /// Single Point to even send some funds to the contracts and from here itself we manage and add the records
 /// Also the single point for withdrawl of any sort from the contracts
 /// Set withdraw rules too
+// Funds are sent and withdrawn from this single contract
 
 interface DonationRegistery {
     function addDonorRecord(
