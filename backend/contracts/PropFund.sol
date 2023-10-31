@@ -9,10 +9,10 @@ interface IERC20 {
 
     function transfer(address to, uint256 amount) external returns (bool);
 
-    function allowance(address owner, address spender)
-        external
-        view
-        returns (uint256);
+    function allowance(
+        address owner,
+        address spender
+    ) external view returns (uint256);
 
     function approve(address spender, uint256 amount) external returns (bool);
 
@@ -91,7 +91,8 @@ contract PropFund is Ownable {
         uint256 amount
     ) public onlyManager {
         IERC20(token).transferFrom(from, address(this), amount);
-  
+        contributors[msg.sender] += amount;
+        emit receivedToken(token, msg.sender, amount);
     }
 
     function withdrawTokens(
@@ -108,22 +109,17 @@ contract PropFund is Ownable {
      */
 
     /// @dev withdraw eth to a particular address in case of grants
-    function depositETH(address _from)
-        public
-        payable
-        onlyManager
-    {
+    function depositETH(address _from) public payable onlyManager {
         require(msg.value > 0, "No Value Sent");
         contributors[_from] += msg.value;
         emit received(_from, msg.value);
     }
 
     /// @dev withdraw eth to a particular address in case of grants
-    function withdrawEthTo(address payable _to, uint256 _amount)
-        public
-        onlyManager
-        returns (bool)
-    {
+    function withdrawEthTo(
+        address payable _to,
+        uint256 _amount
+    ) public onlyManager returns (bool) {
         (bool success, ) = _to.call{value: _amount}("");
         emit withdrawal(_to, _amount);
         return success;

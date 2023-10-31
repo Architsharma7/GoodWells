@@ -62,10 +62,10 @@ contract PropFundManager is Ownable {
     mapping(address => bool) public approved;
 
     address public registeryAddress;
-    DonationRegistery public _donationRegistery ;
+    DonationRegistery public _donationRegistery;
 
     address public tokenContractAddress;
-    TokenContract public _tokenContract ;
+    TokenContract public _tokenContract;
 
     constructor(
         address _manager,
@@ -75,8 +75,7 @@ contract PropFundManager is Ownable {
         manager = _manager;
         registeryAddress = _regsiteryAddress;
         tokenContractAddress = _tokenAddress;
-        _donationRegistery =
-        DonationRegistery(registeryAddress);
+        _donationRegistery = DonationRegistery(registeryAddress);
         _tokenContract = TokenContract(tokenContractAddress);
         approved[msg.sender] = true;
         approved[manager] = true;
@@ -120,7 +119,7 @@ contract PropFundManager is Ownable {
     ) public onlyApproved returns (uint256 id) {
         /// deploy the fund Contract
 
-        PropFund  _fundContract = new PropFund(manager);
+        PropFund _fundContract = new PropFund(manager);
 
         /// add the details to the data here
         require(campaignID == totalCampaigns, "INVALID CAMPAIGN ID");
@@ -184,11 +183,9 @@ contract PropFundManager is Ownable {
      *  ########  PROP FUND GETTER   #########
      */
 
-    function getCampaignData(uint256 campaignId)
-        public
-        view
-        returns (Campaign memory _campaign)
-    {
+    function getCampaignData(
+        uint256 campaignId
+    ) public view returns (Campaign memory _campaign) {
         _campaign = fundCampaigns[campaignId];
     }
 
@@ -229,7 +226,44 @@ contract PropFundManager is Ownable {
 
         ///mint the depost Tokens
         // for 100 ETH donation , we provide 10 tokens as incentive
-        _tokenContract.mint(msg.sender,( amount * 1 / 10 ));
+        _tokenContract.mint(msg.sender, ((amount * 1) / 10));
+    }
+
+    function donateTokenCampaign(
+        address user,
+        address token,
+        uint256 amount,
+        uint256 campaignID
+    ) public payable {
+        Campaign memory _campaign = fundCampaigns[campaignID];
+
+        require(
+            _campaign._status == campaignStatus.ACTIVE,
+            "NOT OPEN FOR DONATION "
+        );
+
+        require(
+            block.timestamp <
+                _campaign.campaignStartTime + _campaign.campaignDuration,
+            "CAMPAIGN TIME COMPLETED"
+        );
+
+        address fundContractAddress = _campaign.fundContract;
+        PropFund(payable(fundContractAddress)).donateTokens(
+            token,
+            payable(user),
+            amount
+        );
+
+        _campaign.totalFunds += amount;
+        _campaign.totalDonors += 1;
+
+        /// donor record can be directly fetched from incoming and outgoing tx on the chain
+        _donationRegistery.addDonorRecord(user, campaignID, amount);
+
+        ///mint the depost Tokens
+        // for 100 ETH donation , we provide 10 tokens as incentive
+        _tokenContract.mint(msg.sender, ((amount * 1) / 10));
     }
 
     /*
@@ -255,22 +289,54 @@ contract PropFundManager is Ownable {
         );
 
         require(
-            amount <= (_campaign.totalFunds * 4 / 10),
+            amount <= ((_campaign.totalFunds * 4) / 10),
             "Amount Can only be withdrawn until 40% "
         );
 
         /// Initiate the withdrawl
         address fundContractAddress = _campaign.fundContract;
-        PropFund(payable(fundContractAddress)).withdrawEthTo(payable(withdrawAddress), amount);
+        PropFund(payable(fundContractAddress)).withdrawEthTo(
+            payable(withdrawAddress),
+            amount
+        );
+    }
+
+    function withdrawTokenForCampaign(
+        address token,
+        uint256 campaignID,
+        uint256 amount,
+        address withdrawAddress
+    ) public {
+        Campaign memory _campaign = fundCampaigns[campaignID];
+
+        require(_campaign.Creator == msg.sender, "NOT AUTHORISED TO WITHDRAW");
+
+        require(
+            block.timestamp >
+                _campaign.campaignStartTime + _campaign.campaignDuration,
+            "CAMPAIGN TIME COMPLETED"
+        );
+
+        require(
+            amount <= ((_campaign.totalFunds * 4) / 10),
+            "Amount Can only be withdrawn until 40% "
+        );
+
+        /// Initiate the withdrawl
+        address fundContractAddress = _campaign.fundContract;
+        PropFund(payable(fundContractAddress)).withdrawTokens(
+            token,
+            payable(withdrawAddress),
+            amount
+        );
     }
 
     function addProof(uint256 campaignID, string memory proofCID) public {
         Campaign memory _campaign = fundCampaigns[campaignID];
 
         require(_campaign.Creator == msg.sender, "NOT AUTHORISED TO WITHDRAW");
-        
 
-        /// Proof addition Complete 
+        /// Proof addition Complete
         withdrawProofs[campaignID].push(proofCID);
         /// Now check needs to be implemented from The DOA Manager and the member itself
     }
