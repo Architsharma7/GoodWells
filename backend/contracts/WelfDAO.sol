@@ -227,19 +227,15 @@ contract WelfDAO is Ownable {
      *  ########  MEMBER GETTER VARAIBLES   #########
      */
 
-    function getMemberData(address user)
-        public
-        view
-        returns (DAOMember memory _member)
-    {
+    function getMemberData(
+        address user
+    ) public view returns (DAOMember memory _member) {
         _member = daoMembers[user];
     }
 
-    function getMemberStatus(address user)
-        public
-        view
-        returns (memberStatus _status)
-    {
+    function getMemberStatus(
+        address user
+    ) public view returns (memberStatus _status) {
         _status = daoMembers[user].status;
     }
 
@@ -302,11 +298,9 @@ contract WelfDAO is Ownable {
 
     /// Finalize the Voting and Create the Fund Contract if approved , with marked as verified
     /// Voting Can be ended only by the manager , without any time Limit for now
-    function completeVoting(uint256 _proposalID)
-        public
-        onlyManager
-        returns (uint256 campaignID)
-    {
+    function completeVoting(
+        uint256 _proposalID
+    ) public onlyManager returns (uint256 campaignID) {
         campaignProposal memory _campaign = proposals[_proposalID];
         require(!_campaign.verified, "ALREADY VERIFIED");
         // require(
