@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.14;
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts@4.9.3/access/Ownable.sol";
 import "./PropFund.sol";
 
 /// Allowed only after the req is approved by the DAO
@@ -72,7 +72,7 @@ contract PropFundManager is Ownable {
         address _manager,
         address _regsiteryAddress,
         address _tokenAddress
-    ) Ownable(msg.sender) {
+    ) {
         manager = _manager;
         registeryAddress = _regsiteryAddress;
         tokenContractAddress = _tokenAddress;

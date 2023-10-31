@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts@4.9.3/access/Ownable.sol";
 
 interface IERC20 {
     function totalSupply() external view returns (uint256);
@@ -45,7 +45,7 @@ contract WelfFunds is Ownable {
     address public manager;
     address public nftContract;
 
-    constructor() Ownable(msg.sender) {
+    constructor() {
         manager = msg.sender;
     }
 

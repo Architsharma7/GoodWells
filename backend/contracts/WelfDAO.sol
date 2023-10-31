@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.14;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts@4.9.3/access/Ownable.sol";
 
 /// Manage the Members Access and thier Profile Status
 /// Manage All the proposals they create and vote on those
@@ -135,7 +135,7 @@ contract WelfDAO is Ownable {
         address _tokenAddress,
         address _manager,
         address _fundManager
-    )  Ownable(msg.sender) {
+    ) {
         manager = _manager;
         nftContractAddress = _nftAddress;
         fundManagerAddress = _fundManager;

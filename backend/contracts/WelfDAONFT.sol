@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.14;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
+import "@openzeppelin/contracts@4.9.3/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts@4.9.3/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts@4.9.3/access/Ownable.sol";
+import "@openzeppelin/contracts@4.9.3/utils/Counters.sol";
 
 interface WelfFunds {
     // to stake the amount to join the DAO
@@ -36,7 +36,7 @@ contract WelfDAONFT is ERC721, Ownable {
     event Revoke(address indexed to, uint256 indexed tokenId);
 
     constructor(string memory _base, address welfFunds)
-        ERC721("Welf DAO Member", "WelfMember") Ownable(msg.sender)
+        ERC721("Welf DAO Member", "WelfMember")
     {
         baseURI = _base;
         manager = msg.sender;

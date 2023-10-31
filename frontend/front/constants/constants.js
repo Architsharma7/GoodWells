@@ -1,15 +1,15 @@
 export const TOKEN_CONTRACT_ADDRESS =
-  "0xa950B39bAA4f17065035BA4faFeaB513cf9106c4";
+  "0x9A3d51f05ea4d2755589B8d8cE7960BA0c9Bc4DB";
 export const NFT_CONTRACT_ADDRESS =
-  "0x4d8c79532A90Cd75307820cB9ef066a9A7305460";
+  "0xb33a00C733F2840Ac81B9b79Ef7C1fB9cD750330";
 export const REGISTERY_CONTRACT_ADDRESS =
-  "0xfDA0991fB004C2AA5B522317755B1D2F8384054B";
+  "0xDde420B4c2C882f967D953843bF7BCDf54C3a69e";
 export const DAO_CONTRACT_ADDRESS =
-  "0x42A5e7052E3AbfEb57Da66a64a95408A5C6a9b98";
+  "0xf9ACAE1dC1E523F7F67EC03CC88c7D2cf249E442";
 export const DAOFUND_CONTRACT_ADDRESS =
-  "0x056537e22cAC19Eb010bD69466a973112B88B5ba";
+  "0x0Ab7f4E499b5BbDDDE1dA958e67B1da4Ed0fBeF5";
 export const FUNDMANAGER_CONTRACT_ADDRESS =
-  "0x330a5495F9912205C3117fE7Cd195f4468199eE6";
+  "0xFF3211fF08e8b9F7a42a28E676a4fA29Cf47af9d";
 
 export const TOKEN_CONTRACT_ABI = [
   {
@@ -439,6 +439,7 @@ export const TOKEN_CONTRACT_ABI = [
     type: "function",
   },
 ];
+
 export const NFT_CONTRACT_ABI = [
   {
     inputs: [
@@ -1000,31 +1001,8 @@ export const NFT_CONTRACT_ABI = [
     type: "function",
   },
 ];
+
 export const REGISTERY_CONTRACT_ABI = [
-  {
-    inputs: [],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "previousOwner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "newOwner",
-        type: "address",
-      },
-    ],
-    name: "OwnershipTransferred",
-    type: "event",
-  },
   {
     inputs: [
       {
@@ -1048,184 +1026,8 @@ export const REGISTERY_CONTRACT_ABI = [
     stateMutability: "nonpayable",
     type: "function",
   },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        internalType: "bool",
-        name: "status",
-        type: "bool",
-      },
-    ],
-    name: "approve",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    name: "approved",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    name: "donorRecords",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "totalDonations",
-        type: "uint256",
-      },
-      {
-        internalType: "uint256",
-        name: "totalAmountDonated",
-        type: "uint256",
-      },
-      {
-        internalType: "string",
-        name: "profileCID",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_user",
-        type: "address",
-      },
-    ],
-    name: "getProfileCID",
-    outputs: [
-      {
-        internalType: "string",
-        name: "_profieCID",
-        type: "string",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_user",
-        type: "address",
-      },
-    ],
-    name: "getUserData",
-    outputs: [
-      {
-        components: [
-          {
-            internalType: "uint256",
-            name: "totalDonations",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256[]",
-            name: "campaignIDs",
-            type: "uint256[]",
-          },
-          {
-            internalType: "uint256",
-            name: "totalAmountDonated",
-            type: "uint256",
-          },
-          {
-            internalType: "string",
-            name: "profileCID",
-            type: "string",
-          },
-        ],
-        internalType: "struct DonationRegistery.Donor",
-        name: "_donorData",
-        type: "tuple",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "owner",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "renounceOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_user",
-        type: "address",
-      },
-      {
-        internalType: "string",
-        name: "_profileCID",
-        type: "string",
-      },
-    ],
-    name: "setProfileCID",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "newOwner",
-        type: "address",
-      },
-    ],
-    name: "transferOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
 ];
+
 export const DAO_CONTRACT_ABI = [
   {
     inputs: [
@@ -1871,191 +1673,8 @@ export const DAO_CONTRACT_ABI = [
     type: "function",
   },
 ];
+
 export const DAOFUND_CONTRACT_ABI = [
-  {
-    inputs: [],
-    stateMutability: "nonpayable",
-    type: "constructor",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "address",
-        name: "previousOwner",
-        type: "address",
-      },
-      {
-        indexed: true,
-        internalType: "address",
-        name: "newOwner",
-        type: "address",
-      },
-    ],
-    name: "OwnershipTransferred",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "received",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "token",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "receivedToken",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "withdrawal",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: false,
-        internalType: "address",
-        name: "token",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "address",
-        name: "user",
-        type: "address",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "withdrawalToken",
-    type: "event",
-  },
-  {
-    stateMutability: "payable",
-    type: "fallback",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "newManager",
-        type: "address",
-      },
-    ],
-    name: "changeManager",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "token",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "from",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "donateTokens",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getBalance",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "_user",
-        type: "address",
-      },
-    ],
-    name: "getContribution",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
   {
     inputs: [
       {
@@ -2071,53 +1690,7 @@ export const DAOFUND_CONTRACT_ABI = [
     ],
     name: "intiateStake",
     outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "manager",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "nftContract",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "owner",
-    outputs: [
-      {
-        internalType: "address",
-        name: "",
-        type: "address",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "renounceOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
+    stateMutability: "payable",
     type: "function",
   },
   {
@@ -2139,97 +1712,8 @@ export const DAOFUND_CONTRACT_ABI = [
     stateMutability: "nonpayable",
     type: "function",
   },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "nftAddress",
-        type: "address",
-      },
-    ],
-    name: "setNFTContractAddress",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "stakedAmount",
-    outputs: [
-      {
-        internalType: "uint256",
-        name: "",
-        type: "uint256",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "newOwner",
-        type: "address",
-      },
-    ],
-    name: "transferOwnership",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address payable",
-        name: "_to",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "_amount",
-        type: "uint256",
-      },
-    ],
-    name: "withdrawEthTo",
-    outputs: [
-      {
-        internalType: "bool",
-        name: "",
-        type: "bool",
-      },
-    ],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [
-      {
-        internalType: "address",
-        name: "token",
-        type: "address",
-      },
-      {
-        internalType: "address",
-        name: "to",
-        type: "address",
-      },
-      {
-        internalType: "uint256",
-        name: "amount",
-        type: "uint256",
-      },
-    ],
-    name: "withdrawTokens",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    stateMutability: "payable",
-    type: "receive",
-  },
 ];
+
 export const FUNDMANAGER_CONTRACT_ABI = [
   {
     inputs: [
@@ -2441,6 +1925,34 @@ export const FUNDMANAGER_CONTRACT_ABI = [
       },
     ],
     name: "donateCampaign",
+    outputs: [],
+    stateMutability: "payable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "user",
+        type: "address",
+      },
+      {
+        internalType: "address",
+        name: "token",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "campaignID",
+        type: "uint256",
+      },
+    ],
+    name: "donateTokenCampaign",
     outputs: [],
     stateMutability: "payable",
     type: "function",
@@ -2738,7 +2250,36 @@ export const FUNDMANAGER_CONTRACT_ABI = [
     stateMutability: "view",
     type: "function",
   },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "token",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "campaignID",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "amount",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "withdrawAddress",
+        type: "address",
+      },
+    ],
+    name: "withdrawTokenForCampaign",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
 ];
+
 export const PROPFUND_CONTRACT_ABI = [
   {
     inputs: [
