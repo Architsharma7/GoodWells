@@ -10,7 +10,7 @@ const Footer = () => {
         </span>
         <ul className="flex flex-wrap items-center mt-3 text-sm text-white sm:mt-0">
           <li>
-            <a href="https://github.com/Architsharma7/PublicHelpDAO" className="hover:underline">
+            <a href="" className="hover:underline">
               Github
             </a>
           </li>

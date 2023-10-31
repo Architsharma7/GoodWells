@@ -37,6 +37,7 @@ const Proposal = () => {
   const formTitles = ["title", "desc", "amount", "image", "preview"];
   const [proposalForm, setProposalForm] = useState({
     title: "",
+    type: "Environmental Conservation",
     desc: "",
     donation: "",
     donationbreakage: "",
@@ -117,6 +118,7 @@ const Proposal = () => {
 
       const proposal = {
         title: proposalForm.title,
+        type: proposalForm.type,
         desc: proposalForm.desc,
         donation: proposalForm.donation,
         donationbreakage: proposalForm.donationbreakage,

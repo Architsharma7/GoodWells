@@ -13,6 +13,12 @@ const Proposalpreview = ({proposalForm}) => {
         {proposalForm.title}
       </p>
       <p className="mt-10 text-3xl 4xl:text-5xl 4xl:mt-16">
+        Proposal Cause
+      </p>
+      <p className="mt-3 text-2xl 4xl:text-4xl 4xl:mt-6">
+        {proposalForm.type}
+      </p>
+      <p className="mt-10 text-3xl 4xl:text-5xl 4xl:mt-16">
         Proposal Description
       </p>
       <p className="mt-3 text-2xl 4xl:text-4xl 4xl:mt-6">

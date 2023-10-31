@@ -6,6 +6,7 @@ import {
   REGISTERY_CONTRACT_ADDRESS,
 } from "../constants/constants";
 import { ethers } from "ethers";
+import dynamic from "next/dynamic";
 
 const Donatordashboard = () => {
   const [userData, setUserData] = useState();
@@ -94,4 +95,4 @@ const Donatordashboard = () => {
   );
 };
 
-export default Donatordashboard;
+export default dynamic(() => Promise.resolve(Donatordashboard), { ssr: false });
