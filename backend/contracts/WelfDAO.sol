@@ -135,7 +135,7 @@ contract WelfDAO is Ownable {
         address _tokenAddress,
         address _manager,
         address _fundManager
-    ) {
+    )  Ownable(msg.sender) {
         manager = _manager;
         nftContractAddress = _nftAddress;
         fundManagerAddress = _fundManager;

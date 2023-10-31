@@ -21,7 +21,7 @@ contract WelfDAOToken is ERC20, Ownable {
 
     mapping(address => bool) public approved;
 
-    constructor() ERC20("Welf Token", "Welf") {
+    constructor() ERC20("Welf Token", "Welf") Ownable(msg.sender) {
         manager = msg.sender;
         approved[msg.sender] = true;
     }

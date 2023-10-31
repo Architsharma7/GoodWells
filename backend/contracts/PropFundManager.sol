@@ -72,7 +72,7 @@ contract PropFundManager is Ownable {
         address _manager,
         address _regsiteryAddress,
         address _tokenAddress
-    ) {
+    ) Ownable(msg.sender) {
         manager = _manager;
         registeryAddress = _regsiteryAddress;
         tokenContractAddress = _tokenAddress;
