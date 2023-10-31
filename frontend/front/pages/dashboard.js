@@ -119,7 +119,7 @@ const Dashboard = () => {
                   <Tab>Proposals Voted On</Tab>
                   <Tab>Proposals Cancelled</Tab>
                 </TabList>
-                {createdProposals ? (
+                {createdProposals && createdProposals[0] ? (
                   <TabPanels>
                     <TabPanel>
                       {createdProposals.map((proposal) => {
