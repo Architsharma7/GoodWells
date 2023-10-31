@@ -40,7 +40,7 @@ contract PropFund is Ownable {
 
     address public manager;
 
-    constructor(address _manager) {
+    constructor(address _manager) Ownable(msg.sender) {
         manager = _manager;
         transferOwnership(manager);
     }

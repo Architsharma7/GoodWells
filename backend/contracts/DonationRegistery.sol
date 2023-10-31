@@ -22,7 +22,7 @@ contract DonationRegistery is Ownable {
 
     mapping(address => bool) public approved;
 
-    constructor() {
+    constructor() Ownable(msg.sender) {
         approved[msg.sender] = true;
     }
 

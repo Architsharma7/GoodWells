@@ -4,4 +4,4 @@ Welf NFT -- ✅
 Registery -- ✅
 MOck Prop FUnd -- ✅
 Prop fund manager -- ✅
-WelfDAO --
+WelfDAO -- ✅

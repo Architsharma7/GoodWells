@@ -36,7 +36,7 @@ contract WelfDAONFT is ERC721, Ownable {
     event Revoke(address indexed to, uint256 indexed tokenId);
 
     constructor(string memory _base, address welfFunds)
-        ERC721("Welf DAO Member", "WelfMember")
+        ERC721("Welf DAO Member", "WelfMember") Ownable(msg.sender)
     {
         baseURI = _base;
         manager = msg.sender;

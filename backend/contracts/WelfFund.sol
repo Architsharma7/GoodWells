@@ -45,7 +45,7 @@ contract WelfFunds is Ownable {
     address public manager;
     address public nftContract;
 
-    constructor() {
+    constructor() Ownable(msg.sender) {
         manager = msg.sender;
     }
 
