@@ -4,7 +4,7 @@
 
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.14;
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts@4.9.3/access/Ownable.sol";
 
 contract DonationRegistery is Ownable {
     /// We can add some tags to the Donor Profile , to make them Certified and some other Perks
@@ -22,7 +22,7 @@ contract DonationRegistery is Ownable {
 
     mapping(address => bool) public approved;
 
-    constructor() Ownable(msg.sender) {
+    constructor() {
         approved[msg.sender] = true;
     }
 
