@@ -8,8 +8,8 @@ const Navbar = () => {
 
   return (
     <div className="w-screen">
-      <div className="xl:mx-auto xl:flex xl:justify-center xl:mt-5 mt-0">
-        <nav className="bg-white xl:px-6 px-2 sm:px-4 py-2 xl:w-3/5 w-full xl:rounded-3xl z-20 border border-black">
+      <div className="xl:mx-auto xl:flex xl:justify-center mt-0">
+        <nav className="bg-white xl:px-6 px-2 sm:px-4 py-2 w-full z-20 border border-black">
           <div className="container flex flex-wrap items-center justify-between mx-auto">
             <a href="/" className="flex items-center">
               <span className="self-center text-2xl whitespace-nowrap text-black 4xl:text-4xl">
