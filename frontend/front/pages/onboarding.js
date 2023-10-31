@@ -27,6 +27,7 @@ const Onboarding = () => {
   const options = useMemo(() => countryList().getData(), []);
   const [ipfsUrl, setIpfsUrl] = useState("");
   const [loading, setLoading] = useState(false);
+  const [streamStarted, setStreamStarted] = useState(false);
   const router = useRouter();
   const toast = useToast();
 
@@ -122,6 +123,12 @@ const Onboarding = () => {
     }
   };
 
+  const startStream = async () => {
+    setTimeout(() => {
+      setStreamStarted(true);
+    }, 5000);
+  };
+
   // const fetchLocation = async( ) => {
   //   return await fetch(`https://app.zipcodebase.com/api/v1/search?apikey=ee376e80-b02a-11ed-a435-e3faa9ec003f&codes=${memberData.pincode}`)
   //   .then(response => response.json())
@@ -137,7 +144,7 @@ const Onboarding = () => {
       <div className="lg:w-2/5 w-4/5 md:w-3/5 mx-auto">
         <div className="flex flex-col mx-auto mt-14">
           <p className="text-6xl text-center 4xl:text-8xl">
-            Join &nbsp;WELFDAO
+            Join &nbsp;GoodWells DAO
           </p>
           <p className="text-3xl 4xl:text-5xl justify-start mt-10 4xl:mt-20">
             Name
@@ -197,6 +204,20 @@ const Onboarding = () => {
                 onChange={(e) => setFiles(e.target.files[0])}
               />
             </div>
+          </div>
+          <div className="mt-16 items-center mx-auto">
+            {streamStarted ? (
+              <button className="bg-white px-10 py-2 text-2xl text-indigo-400 rounded-xl">
+                Streaming $G .....
+              </button>
+            ) : (
+              <button
+                onClick={() => startStream()}
+                className="bg-indigo-400 px-10 py-2 text-2xl text-white rounded-xl"
+              >
+                Start stream
+              </button>
+            )}
           </div>
         </div>
         {loading ? (

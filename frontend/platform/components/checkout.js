@@ -1,25 +1,25 @@
 import { WagmiConfig } from "wagmi";
+import { wagmiConfig } from "./config";
 import SuperfluidWidget from "@superfluid-finance/widget";
 import superTokenList from "@superfluid-finance/tokenlist";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import React from "react";
 
 const Checkout = () => {
-  const flowRate = 10;
-  const address = "";
+  const flowRate = "10";
+  const address = "0x41D22F2e55BD7B6bbb16f82e852a58c36C5D5Cf8";
 
-  const paymentOptions = [
-    {
-      chainId: 42220,
-      receiverAddress: address,
-      superToken: {
-        address: "0x62B8B11039FcfE5aB0C56E502b1C372A3d2a9c7A",
-      },
-      flowRate: {
-        amountEther: flowRate,
-        period: "month",
-      },
+  const paymentOptions = {
+    chainId: 42220,
+    receiverAddress: address,
+    superToken: {
+      address: "0x62B8B11039FcfE5aB0C56E502b1C372A3d2a9c7A",
     },
-  ];
+    flowRate: {
+      amountEther: flowRate,
+      period: "month",
+    },
+  };
 
   const paymentDetails = {
     paymentOptions,

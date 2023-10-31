@@ -3,6 +3,7 @@ import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import { DAO_CONTRACT_ABI, DAO_CONTRACT_ADDRESS } from "../constants/constants";
 import { ethers } from "ethers";
+import dynamic from "next/dynamic";
 
 const Dashboard = () => {
   const { address, isConnected } = useAccount();
@@ -167,4 +168,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default dynamic(() => Promise.resolve(Dashboard), { ssr: false });
